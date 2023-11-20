@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-print(len("hydar"))
+print(len(input("What is your name?")))
