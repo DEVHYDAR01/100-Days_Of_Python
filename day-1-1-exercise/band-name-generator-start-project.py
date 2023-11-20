@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #1. Create a greeting for your program.
 print("Welcome to the Band Name Generator.")
 #2. Ask the user for the city that they grew up in.
