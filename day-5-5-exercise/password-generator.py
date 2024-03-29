@@ -17,6 +17,7 @@ list_letters = []
 list_numbers = []
 list_symbols = []
 ran_list_result = []
+hard_list = []
 for letter in letters:
     ran_letters = random.choice(letters)
     list_letters.append(ran_letters)
@@ -39,6 +40,11 @@ for symbol in symbols:
 for k in range(0, nr_symbols):
     ran_list_result.append(list_symbols[k])
 password_gen = ''.join(ran_list_result)
-print(f"Here is your password: {password_gen}")
+print(f"Here is your easy password: {password_gen}")
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
+for ran in ran_list_result:
+    hard_password = random.choice(ran_list_result)
+    hard_list.append(hard_password)
+hard_password_gen = ''.join(hard_list)
+print(f"Here is your hard password gen: {hard_password_gen}")
