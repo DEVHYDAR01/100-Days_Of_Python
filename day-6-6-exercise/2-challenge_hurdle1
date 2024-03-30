@@ -15,9 +15,5 @@ def hurdle1():
     move()
     turn_left()
     
-hurdle1()
-hurdle1()
-hurdle1()
-hurdle1()
-hurdle1()
-hurdle1()
+for i in range(0, 6):
+    hurdle1()
