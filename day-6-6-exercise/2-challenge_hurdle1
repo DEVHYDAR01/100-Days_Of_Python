@@ -14,6 +14,5 @@ def hurdle1():
     turn_right()
     move()
     turn_left()
-    
 for i in range(0, 6):
     hurdle1()
