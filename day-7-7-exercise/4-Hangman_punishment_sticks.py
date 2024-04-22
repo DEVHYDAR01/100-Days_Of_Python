@@ -94,6 +94,7 @@ while not end_of_game:
       print(lives)
     if lives == 0:
       print("You lose!")
+      print(stages[0])
       break
 
     #Join all the elements in the list and turn it into a String.
@@ -105,6 +106,6 @@ while not end_of_game:
         print("You win.")
 
     #TODO-3: - print the ASCII art from 'stages' that corresponds to the current number of 'lives' the user has remaining.
-    for pos in range(len(stages)):
+    for pos in range(0, len(stages)):
        if lives == pos:
           print(stages[pos])
