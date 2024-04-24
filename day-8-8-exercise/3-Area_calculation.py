@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 #Write your code below this line 👇
+import math
 
-
-
-
-
+def paint_calc(height, width, cover):
+    area = height * width
+    number_of_cans = area / cover
+    print(f"You'll need {math.ceil(number_of_cans)} cans of paint")
 
 
 #Write your code above this line 👆
