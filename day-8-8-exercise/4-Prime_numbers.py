@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 #Write your code below this line 👇
 def prime_checker(number):
+    is_prime = True
     if number <= 1:
         print("It's not a prime")
     if number > 1:
         for i in range(2, number):
             if number % i == 0:
-                print("It's not a prime number")
-                break
-        else:
-            print("It's a prime number")
+                is_prime = False
+    if is_prime:
+        print("It's a prime number")
+    else:
+        print("It's not a prime number")
     
 
 #Write your code above this line 👆
