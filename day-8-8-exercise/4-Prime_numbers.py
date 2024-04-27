@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #Write your code below this line 👇
-def prime_checker(number=n):
+def prime_checker(number):
     if number <= 1:
         print("It's not a prime")
     if number > 1:
