@@ -42,5 +42,4 @@ def caesar(text, shift, direction):
     else:
         print("enter what you wnat to do")
 
-#TODO-3: Check if the user wanted to encrypt or decrypt the message by checking the 'direction' variable. Then call the correct function based on that 'drection' variable. You should be able to test the code to encrypt *AND* decrypt a message.
 caesar(text, shift, direction)
