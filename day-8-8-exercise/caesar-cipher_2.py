@@ -12,38 +12,25 @@ def caesar(start_text, shift_amount, cipher_direction):
       end_text += alphabet[new_position]
     else:
       end_text += char
-    #TODO-3: What happens if the user enters a number/symbol/space?
-    #Can you fix the code to keep the number/symbol/space when the text is encoded/decoded?
-    #e.g. start_text = "meet me at 3"
-    #end_text = "•••• •• •• 3"
 
     
   print(f"Here's the {cipher_direction}d result: {end_text}")
 
 from art import logo
 print(logo)
-#TODO-4: Can you figure out a way to ask the user if they want to restart the cipher program?
-#e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
-#If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
-#Hint: Try creating a while loop that continues to execute the program if the user types 'yes'.
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-    
-if shift > len(alphabet) - 0:
-  shift = shift % 25
-caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
 while again:
-  want_to_again = input("Type 'yes' if you want to go again. Otherwise type 'no'.").lower()
-  if want_to_again == 'yes':
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-    text = input("Type your message:\n").lower()
-    shift = int(input("Type the shift number:\n"))
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+  text = input("Type your message:\n").lower()
+  shift = int(input("Type the shift number:\n"))
     
-    if shift > len(alphabet) - 0:
-      shift = shift % 25
-    caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
-  elif want_to_again == 'no':
+  if shift > len(alphabet) - 0:
+    shift = shift % 25
+  caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+
+  want_to_again = input("Type 'yes' if you want to go again. Otherwise type 'no'.").lower()
+  if want_to_again == 'no':
     again = False
+    print("Good bye")
+
 
 
