@@ -16,8 +16,6 @@ student_grades = {}
 for key in student_scores:
     names = key
     scores = student_scores[key]
-    # print(names)
-    # print(scores)
     if scores == 91 or scores > 91:
         student_grades[names] = "Oustanding"
     elif scores == 81 or scores > 81:
