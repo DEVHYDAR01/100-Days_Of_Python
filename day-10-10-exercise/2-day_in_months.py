@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 def is_leap(year):
+  """This will return true if leap year and false if not"""
   if year % 4 == 0:
     if year % 100 == 0:
       if year % 400 == 0:
@@ -14,6 +15,9 @@ def is_leap(year):
 
 # # # TODO: Add more code here 👇
 def days_in_month(year, month):
+  """This will accept two parameters check and work out
+  the days in month if not leap year and return 29 days if leap and month is 2
+  """
   is_leap_checking = is_leap(year)
   print(is_leap_checking)
   month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
