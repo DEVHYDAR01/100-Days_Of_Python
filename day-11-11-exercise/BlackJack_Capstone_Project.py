@@ -38,7 +38,7 @@ computer_cards = []
 
 random.shuffle(cards)
 print(cards)
-shuffled = str(cards)
+# shuffled = str(cards)
 for i in range(0, 2):
     get_cards_for_user = random.choice(cards)
     append_to_list = user_cards.append(get_cards_for_user)
@@ -66,18 +66,34 @@ def blackjack_detector_computer(computer_cards):
     else:
         return "Not detected"
 
+def calculator_user(user_cards):
+    user_total = 0
+    for cards in user_cards:
+        user_total += cards
+    return user_total
+
+def calculator_computer(computer_cards):
+    computer_total = 0
+    for cards in computer_cards:
+        computer_total += cards
+    return computer_total
+
 blackjack_detected_user = blackjack_detector_user(user_cards)
 print(blackjack_detected_user)
 blackjack_detected_computer = blackjack_detector_computer(computer_cards)
 print(blackjack_detected_computer)
 
-if blackjack_detected_user == True and blackjack_detected_computer == True:
-    print("you lose")
-elif blackjack_detected_computer == True:
-    print("You lose")
-elif blackjack_detected_user == True:
-    print("you win")
+calculated_user = calculator_user(user_cards)
+print(calculated_user)
+calculated_computer = calculator_computer(computer_cards)
+print(calculated_computer)
 
+# if blackjack_detected_user == True and blackjack_detected_computer == True:
+#     print("you lose")
+# elif blackjack_detected_computer == True:
+#     print("You lose")
+# elif blackjack_detected_user == True:
+#     print("you win")
 
 
 
