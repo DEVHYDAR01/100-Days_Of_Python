@@ -95,7 +95,26 @@ print(calculated_computer)
 # elif blackjack_detected_user == True:
 #     print("you win")
 
+def ace_checker_user(user_cards):
+    for cards in user_cards:
+        if cards == 11:
+            return True
 
+def ace_checker_computer(computer_cards):
+    for cards in computer_cards:
+        if cards == 11:
+            return True
+
+ace_checked_user = ace_checker_user(user_cards)
+print(ace_checked_user)
+ace_checked_computer = ace_checker_computer(computer_cards)
+print(ace_checked_computer)
+
+if calculated_user == 21:
+    if ace_checked_user == 11:
+        pass
+else:
+    print("you lose!")
 
 
 
