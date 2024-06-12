@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+ #!/usr/bin/env python3
 import random
 ############### Blackjack Project #####################
 
@@ -36,18 +36,6 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 user_cards = []
 computer_cards = []
 
-random.shuffle(cards)
-print(cards)
-# shuffled = str(cards)
-for i in range(0, 2):
-    get_cards_for_user = random.choice(cards)
-    append_to_list = user_cards.append(get_cards_for_user)
-    get_cards_for_computer = random.choice(cards)
-    append_to_computer_list = computer_cards.append(get_cards_for_computer)
-
-print(user_cards)
-print(computer_cards)
-
 def blackjack_detector_user(user_cards):
     blackjack_detector_user = 0
     for i in user_cards:
@@ -78,45 +66,92 @@ def calculator_computer(computer_cards):
         computer_total += cards
     return computer_total
 
-blackjack_detected_user = blackjack_detector_user(user_cards)
-print(blackjack_detected_user)
-blackjack_detected_computer = blackjack_detector_computer(computer_cards)
-print(blackjack_detected_computer)
+def ace_checker_user(user_cards):
+    for cards in user_cards:
+        if cards == 11:
+            return cards
+        else:
+            return "ace not there"
+
+def ace_checker_computer(computer_cards):
+    for cards in computer_cards:
+        if cards == 11:
+            return cards
+        else:
+            return "ace not there"
+
+def append_user():
+    random.shuffle(cards)
+    for i in range(0, 1):
+        get_cards_for_user = random.choice(cards)
+        append_to_list = user_cards.append(get_cards_for_user)
+
+def append_computer():
+    random.shuffle(cards)
+    for i in range(0, 1):
+        get_cards_for_computer = random.choice(cards)
+        append_to_computer_list = computer_cards.append(get_cards_for_computer)
+
+
+random.shuffle(cards)
+print(cards)
+# shuffled = str(cards)
+for i in range(0, 2):
+    get_cards_for_user = random.choice(cards)
+    append_to_list = user_cards.append(get_cards_for_user)
+    get_cards_for_computer = random.choice(cards)
+    append_to_computer_list = computer_cards.append(get_cards_for_computer)
+
+print(user_cards)
+print(computer_cards)
 
 calculated_user = calculator_user(user_cards)
 print(calculated_user)
 calculated_computer = calculator_computer(computer_cards)
 print(calculated_computer)
 
-# if blackjack_detected_user == True and blackjack_detected_computer == True:
-#     print("you lose")
-# elif blackjack_detected_computer == True:
-#     print("You lose")
-# elif blackjack_detected_user == True:
-#     print("you win")
+blackjack_detected_user = blackjack_detector_user(user_cards)
+print(blackjack_detected_user)
+blackjack_detected_computer = blackjack_detector_computer(computer_cards)
+print(blackjack_detected_computer)
 
-def ace_checker_user(user_cards):
-    for cards in user_cards:
-        if cards == 11:
-            return True
-
-def ace_checker_computer(computer_cards):
-    for cards in computer_cards:
-        if cards == 11:
-            return True
+if blackjack_detected_user == True and blackjack_detected_computer == True:
+    print("you lose")
+elif blackjack_detected_computer == True:
+    print("You lose")
+elif blackjack_detected_user == True:
+    print("you win")
 
 ace_checked_user = ace_checker_user(user_cards)
 print(ace_checked_user)
 ace_checked_computer = ace_checker_computer(computer_cards)
 print(ace_checked_computer)
 
-if calculated_user == 21:
+if calculated_user > 21:
     if ace_checked_user == 11:
-        pass
+        ace_checked_user = 1
+    if ace_checked_user == 1 and calculated_user > 21:
+        print("you lose")
+    else:
+        pass 
 else:
-    print("you lose!")
+    print("you lose")
 
+get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
 
+if get_another_card == 'y':
+    append_user()
+    total_user = calculator_user(user_cards)
+    print(total_user)
+    total_computer = calculator_computer(computer_cards)
+    print(total_computer)
+elif get_another_card == 'n':
+    append_computer()
+    total_computer = calculator_computer(computer_cards)
+    print(total_computer)
+
+print(user_cards)
+print(computer_cards)
 
 
 
