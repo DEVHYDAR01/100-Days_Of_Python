@@ -1,4 +1,4 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 import random
 ############### Blackjack Project #####################
 
@@ -115,43 +115,40 @@ print(blackjack_detected_user)
 blackjack_detected_computer = blackjack_detector_computer(computer_cards)
 print(blackjack_detected_computer)
 
-if blackjack_detected_user == True and blackjack_detected_computer == True:
-    print("you lose")
-elif blackjack_detected_computer == True:
-    print("You lose")
-elif blackjack_detected_user == True:
-    print("you win")
-
 ace_checked_user = ace_checker_user(user_cards)
 print(ace_checked_user)
 ace_checked_computer = ace_checker_computer(computer_cards)
 print(ace_checked_computer)
 
-if calculated_user > 21:
-    if ace_checked_user == 11:
-        ace_checked_user = 1
-    if ace_checked_user == 1 and calculated_user > 21:
-        print("you lose")
-    else:
-        pass 
-else:
-    print("you lose")
+# if blackjack_detected_user == True: 
+#     print("you win")
+# elif blackjack_detected_computer == True:
+#     print("You lose")
+# elif calculated_user > 21:
+#     if ace_checked_user == 11:
+#         ace_checked_user = 1
+#     if ace_checked_user == 1 and calculated_user > 21:
+#         print("you lose")
+#     else:
+#         get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+# else:
+#     print("you lose")
 
-get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+# get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
 
-if get_another_card == 'y':
-    append_user()
-    total_user = calculator_user(user_cards)
-    print(total_user)
-    total_computer = calculator_computer(computer_cards)
-    print(total_computer)
-elif get_another_card == 'n':
-    append_computer()
-    total_computer = calculator_computer(computer_cards)
-    print(total_computer)
+# if get_another_card == 'y':
+#     append_user()
+#     total_user = calculator_user(user_cards)
+#     print(total_user)
+#     total_computer = calculator_computer(computer_cards)
+#     print(total_computer)
+# elif get_another_card == 'n':
+#     append_computer()
+#     total_computer = calculator_computer(computer_cards)
+#     print(total_computer)
 
-print(user_cards)
-print(computer_cards)
+# print(user_cards)
+# print(computer_cards)
 
 
 
