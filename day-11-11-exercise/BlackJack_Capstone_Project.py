@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import random
+from art import logo 
 ############### Blackjack Project #####################
 
 #Difficulty Normal 😎: Use all Hints below to complete the project.
@@ -14,7 +15,7 @@ import random
 ## The Jack/Queen/King all count as 10.
 ## The the Ace can count as 11 or 1.
 ## Use the following list as the deck of cards:
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 ## The cards in the list have equal probability of being drawn.
 ## Cards are not removed from the deck as they are drawn.
 ## The computer is the dealer.
@@ -32,147 +33,70 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 #Hint 3: Download and read this flow chart I've created: 
 #   https://drive.google.com/uc?export=download&id=1rDkiHCrhaf9eX7u7yjM1qwSuyEk-rPnt
-
+print(logo)
 user_cards = []
 computer_cards = []
+is_game_over = True
 
-def blackjack_detector_user(user_cards):
-    blackjack_detector_user = 0
-    for i in user_cards:
-        blackjack_detector_user += i
-    if blackjack_detector_user == 21:
-        return True
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return "it's a draw"
+    elif computer_score == 0:
+        return "Lose, opponent has blackjack"
+    elif user_score == 0:
+        return "Win with a black jack"
+    elif user_score > 21:
+        return "You went over 21, you lose"
+    elif computer_score > 21:
+        return "Opponent went over, you win"
+    elif user_score > computer_score:
+        return "You win"
     else:
-        return "Not detected"
+        return "you loose"
     
-def blackjack_detector_computer(computer_cards):
-    blackjack_detector_computer = 0
-    for i in computer_cards:
-        blackjack_detector_computer += i
-    if blackjack_detector_computer == 21:
-        return True
+def deal_card():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    random.shuffle(cards)
+    get_card = random.choice(cards)
+    return get_card
+
+for i in range(2):
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+
+def calculator_score(cards):
+    score = sum(cards)
+    if score == 21 and len(cards) == 2:
+        return 0
+    if 11 in cards and score > 21:
+        cards.remove(11)
+        cards.append(1)
+    return score
+
+while is_game_over:
+    user_score = calculator_score(cards=user_cards)
+    computer_score = calculator_score(cards=computer_cards)
+
+    print(f"Your cards: {user_cards}, and current score: {user_score}")
+    print(f"Computer's first hand {computer_cards[0]}")
+
+    if user_score == 0 or computer_score == 0 or user_score > 21:
+        is_game_over = False
     else:
-        return "Not detected"
-
-def calculator_user(user_cards):
-    user_total = 0
-    for cards in user_cards:
-        user_total += cards
-    return user_total
-
-def calculator_computer(computer_cards):
-    computer_total = 0
-    for cards in computer_cards:
-        computer_total += cards
-    return computer_total
-
-def ace_checker_user(user_cards):
-    for cards in user_cards:
-        if cards == 11:
-            return cards
+        get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+        if get_another_card == 'y':
+            user_cards.append(deal_card())
+            print(user_cards)
+            user_score = calculator_score(cards=user_cards)
+            print(user_score)
         else:
-            return "ace not there"
+            is_game_over = False
 
-def ace_checker_computer(computer_cards):
-    for cards in computer_cards:
-        if cards == 11:
-            return cards
-        else:
-            return "ace not there"
+while computer_score != 0 and computer_score < 17:
+    computer_cards.append(deal_card())
+    computer_score = calculator_score(cards=computer_cards)
 
-def append_user():
-    random.shuffle(cards)
-    for i in range(0, 1):
-        get_cards_for_user = random.choice(cards)
-        append_to_list = user_cards.append(get_cards_for_user)
-
-def append_computer():
-    random.shuffle(cards)
-    for i in range(0, 1):
-        get_cards_for_computer = random.choice(cards)
-        append_to_computer_list = computer_cards.append(get_cards_for_computer)
-
-
-random.shuffle(cards)
-print(cards)
-# shuffled = str(cards)
-for i in range(0, 2):
-    get_cards_for_user = random.choice(cards)
-    append_to_list = user_cards.append(get_cards_for_user)
-    get_cards_for_computer = random.choice(cards)
-    append_to_computer_list = computer_cards.append(get_cards_for_computer)
-
-print(user_cards)
-print(computer_cards)
-
-calculated_user = calculator_user(user_cards)
-print(calculated_user)
-calculated_computer = calculator_computer(computer_cards)
-print(calculated_computer)
-
-blackjack_detected_user = blackjack_detector_user(user_cards)
-print(blackjack_detected_user)
-blackjack_detected_computer = blackjack_detector_computer(computer_cards)
-print(blackjack_detected_computer)
-
-ace_checked_user = ace_checker_user(user_cards)
-print(ace_checked_user)
-ace_checked_computer = ace_checker_computer(computer_cards)
-print(ace_checked_computer)
-
-# if blackjack_detected_user == True: 
-#     print("you win")
-# elif blackjack_detected_computer == True:
-#     print("You lose")
-# elif calculated_user > 21:
-#     if ace_checked_user == 11:
-#         ace_checked_user = 1
-#     if ace_checked_user == 1 and calculated_user > 21:
-#         print("you lose")
-#     else:
-#         get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
-# else:
-#     print("you lose")
-
-# get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
-
-# if get_another_card == 'y':
-#     append_user()
-#     total_user = calculator_user(user_cards)
-#     print(total_user)
-#     total_computer = calculator_computer(computer_cards)
-#     print(total_computer)
-# elif get_another_card == 'n':
-#     append_computer()
-#     total_computer = calculator_computer(computer_cards)
-#     print(total_computer)
-
-# print(user_cards)
-# print(computer_cards)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(compare(user_score, computer_score))
 
 
 
