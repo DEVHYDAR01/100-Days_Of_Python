@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import random
-from art import logo 
+from art import logo
+from os import system 
 ############### Blackjack Project #####################
 
 #Difficulty Normal 😎: Use all Hints below to complete the project.
@@ -33,71 +34,77 @@ from art import logo
 
 #Hint 3: Download and read this flow chart I've created: 
 #   https://drive.google.com/uc?export=download&id=1rDkiHCrhaf9eX7u7yjM1qwSuyEk-rPnt
-print(logo)
-user_cards = []
-computer_cards = []
-is_game_over = True
+def blackjack():
+    print(logo)
+    user_cards = []
+    computer_cards = []
+    is_game_over = True
 
-def compare(user_score, computer_score):
-    if user_score == computer_score:
-        return "it's a draw"
-    elif computer_score == 0:
-        return "Lose, opponent has blackjack"
-    elif user_score == 0:
-        return "Win with a black jack"
-    elif user_score > 21:
-        return "You went over 21, you lose"
-    elif computer_score > 21:
-        return "Opponent went over, you win"
-    elif user_score > computer_score:
-        return "You win"
-    else:
-        return "you loose"
-    
-def deal_card():
-    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-    random.shuffle(cards)
-    get_card = random.choice(cards)
-    return get_card
+    def compare(user_score, computer_score):
+        if user_score == computer_score:
+            return "it's a draw"
+        elif computer_score == 0:
+            return "Lose, opponent has blackjack"
+        elif user_score == 0:
+            return "Win with a black jack"
+        elif user_score > 21:
+            return "You went over 21, you lose"
+        elif computer_score > 21:
+            return "Opponent went over, you win"
+        elif user_score > computer_score:
+            return "You win"
+        else:
+            return "you loose"
 
-for i in range(2):
-    user_cards.append(deal_card())
-    computer_cards.append(deal_card())
+    def deal_card():
+        cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+        random.shuffle(cards)
+        get_card = random.choice(cards)
+        return get_card
 
-def calculator_score(cards):
-    score = sum(cards)
-    if score == 21 and len(cards) == 2:
-        return 0
-    if 11 in cards and score > 21:
-        cards.remove(11)
-        cards.append(1)
-    return score
+    for i in range(2):
+        user_cards.append(deal_card())
+        computer_cards.append(deal_card())
 
-while is_game_over:
-    user_score = calculator_score(cards=user_cards)
-    computer_score = calculator_score(cards=computer_cards)
+    def calculator_score(cards):
+        score = sum(cards)
+        if score == 21 and len(cards) == 2:
+            return 0
+        if 11 in cards and score > 21:
+            cards.remove(11)
+            cards.append(1)
+        return score
 
-    print(f"Your cards: {user_cards}, and current score: {user_score}")
-    print(f"Computer's first hand {computer_cards[0]}")
-
-    if user_score == 0 or computer_score == 0 or user_score > 21:
-        is_game_over = False
-    else:
-        get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
-        if get_another_card == 'y':
-            user_cards.append(deal_card())
-            print(user_cards)
+    while is_game_over:
+        play_again = input("Do you want to play a game of Blackjack? Type 'y' or 'n':").lower()
+        if play_again == 'y':
             user_score = calculator_score(cards=user_cards)
-            print(user_score)
+            computer_score = calculator_score(cards=computer_cards)
+            print(f"Your cards: {user_cards}, and current score: {user_score}")
+            print(f"Computer's first hand {computer_cards[0]}")
+            
+            if user_score == 0 or computer_score == 0 or user_score > 21:
+                is_game_over = False
+            else:
+                get_another_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+                if get_another_card == 'y':
+                    user_cards.append(deal_card())
+                    print(user_cards)
+                    user_score = calculator_score(cards=user_cards)
+                    print(user_score)
+                else:
+                    is_game_over = False
+            while computer_score != 0 and computer_score < 17:
+                computer_cards.append(deal_card())
+                computer_score = calculator_score(cards=computer_cards)
+            print(compare(user_score, computer_score))
         else:
             is_game_over = False
+            system('clear')
+            blackjack()
 
-while computer_score != 0 and computer_score < 17:
-    computer_cards.append(deal_card())
-    computer_score = calculator_score(cards=computer_cards)
 
-print(compare(user_score, computer_score))
-
+blackjack()
 
 
 #Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
