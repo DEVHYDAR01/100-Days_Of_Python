@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 
 import random
-
+from art import logo
+print(logo)
+print("Welcome to the Number Guessing Game!")
+print("I'm thinking of a number between 1 and 100.")
 numbers = []
-
 for number in range(1, 101):
     numbers.append(number)
-print(numbers)
-
 get_ran_number = random.choice(numbers)
-print(get_ran_number)
 
 def compare_high_and_low(user_guessed, get_ran_number):
     if user_guessed < get_ran_number:
