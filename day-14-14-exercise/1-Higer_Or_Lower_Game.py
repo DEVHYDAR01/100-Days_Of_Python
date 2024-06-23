@@ -9,6 +9,7 @@ def gen_random_dict(data):
     return dict
 
 def dict_update(compare):
+    '''This function will generate a random dictionary take in an empty one populate it with the values of the random one and return it  '''
     update_dict = gen_random_dict(data)
     for key in update_dict:
         compare[key] = update_dict[key]
@@ -21,6 +22,28 @@ compare_b = {}
 # print(vs)
 update_a = dict_update(compare_a)
 update_b = dict_update(compare_b)
+
+def get_values(compare, which):
+    """This funtion will take in a dictionary and string of what i am comparing,extract the values of the corresponding keys and returns them."""
+    get_name = compare["name"]
+    get_description = compare["description"]
+    get_country = compare["country"]
+    return f"{which}: {get_name}, {get_description}, from {get_country}"
+
+get_values_a = get_values(compare_a, "Compare A")
+get_values_b = get_values(compare_b, "Compare B")
+print(get_values_a)
+print(get_values_b)
+
+def extract_follower_count(compare):
+    """This function takes in a dictionary and returns the follower count"""
+    get_follower_count = compare["follower_count"]
+    return get_follower_count
+
+get_follower_count_a = extract_follower_count(compare_a)
+get_follower_count_b = extract_follower_count(compare_b)
+print(get_follower_count_a)
+print(get_follower_count_b)
 
 
 print(f"The length of data if {len(data)}")
