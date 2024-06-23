@@ -54,6 +54,10 @@ more_followers = input("Who has more followers? Type 'A' or 'B': ").lower()
 if more_followers == 'a':
     if get_follower_count_a > get_follower_count_b:
         score_count = score_count + 1
+        update_a = update_b
+        update_b = gen_random_dict(data)
+        print(update_a)
+        print(update_b)
     else:
         print(F"sorry, that's wrong. Final score: {score_count}")
         isTrue = False
