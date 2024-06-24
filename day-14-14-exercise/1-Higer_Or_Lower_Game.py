@@ -23,7 +23,6 @@ compare_b = {}
 update_a = dict_update(compare_a)
 update_b = dict_update(compare_b)
 
-
 def get_values(compare, which):
     """This funtion will take in a dictionary and string of what i am comparing,extract the values of the corresponding keys and returns them."""
     get_name = compare["name"]
@@ -47,23 +46,31 @@ print(get_follower_count_a)
 print(get_follower_count_b)
 
 
-# isTrue = True
-# while isTrue:
-score_count = 0
-more_followers = input("Who has more followers? Type 'A' or 'B': ").lower()
-if more_followers == 'a':
-    if get_follower_count_a > get_follower_count_b:
-        score_count = score_count + 1
-        update_a = update_b
-        update_b = gen_random_dict(data)
-        print(update_a)
-        print(update_b)
+isTrue = True
+while isTrue:
+    score_count = 0
+    more_followers = input("Who has more followers? Type 'A' or 'B': ").lower()
+    if more_followers == 'a':
+        if get_follower_count_a > get_follower_count_b:
+            score_count = score_count + 1
+            update_a = update_b
+            update_b = gen_random_dict(data)
+            get_values_a = get_values(update_a, "Compare A")
+            get_values_b = get_values(update_b, "Compare B")
+            print(get_values_a)
+            print(get_values_b)
+            get_follower_count_a = extract_follower_count(update_a)
+            get_follower_count_b = extract_follower_count(update_b)
+            print(get_follower_count_a)
+            print(get_follower_count_b)
+            print(update_a)
+            print(update_b)
     else:
         print(F"sorry, that's wrong. Final score: {score_count}")
         isTrue = False
-elif more_followers == 'b':
-    if get_follower_count_b > get_follower_count_a:
-        score_count = score_count + 1
+    # elif more_followers == 'b':
+    #     if get_follower_count_b > get_follower_count_a:
+    #         score_count = score_count + 1
 print(score_count)
 
-print(f"The length of data if {len(data)}")
+# print(f"The length of data if {len(data)}")
