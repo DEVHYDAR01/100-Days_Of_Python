@@ -65,12 +65,25 @@ while isTrue:
             print(get_follower_count_b)
             print(update_a)
             print(update_b)
-    else:
-        print(F"sorry, that's wrong. Final score: {score_count}")
-        isTrue = False
-    # elif more_followers == 'b':
-    #     if get_follower_count_b > get_follower_count_a:
-    #         score_count = score_count + 1
+    # else:
+    #     print(F"sorry, that's wrong. Final score: {score_count}")
+    #     isTrue = False
+    elif more_followers == 'b':
+        if get_follower_count_b > get_follower_count_a:
+            score_count = score_count + 1
+            update_a = update_b
+            update_b = gen_random_dict(data)
+            get_values_a = get_values(update_a, "Compare A")
+            get_values_b = get_values(update_b, "Compare B")
+            print(get_values_a)
+            print(get_values_b)
+            get_follower_count_a = extract_follower_count(update_a)
+            get_follower_count_b = extract_follower_count(update_b)
+            print(get_follower_count_a)
+            print(get_follower_count_b)
+            print(update_a)
+            print(update_b)
+
 print(score_count)
 
 # print(f"The length of data if {len(data)}")
