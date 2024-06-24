@@ -47,8 +47,8 @@ print(get_follower_count_b)
 
 
 isTrue = True
+score_count = 0
 while isTrue:
-    score_count = 0
     more_followers = input("Who has more followers? Type 'A' or 'B': ").lower()
     if more_followers == 'a':
         if get_follower_count_a > get_follower_count_b:
@@ -65,9 +65,10 @@ while isTrue:
             print(get_follower_count_b)
             print(update_a)
             print(update_b)
-    # else:
-    #     print(F"sorry, that's wrong. Final score: {score_count}")
-    #     isTrue = False
+            print(score_count)
+        else:
+            print(F"sorry, that's wrong. Final score: {score_count}")
+            isTrue = False
     elif more_followers == 'b':
         if get_follower_count_b > get_follower_count_a:
             score_count = score_count + 1
@@ -83,7 +84,10 @@ while isTrue:
             print(get_follower_count_b)
             print(update_a)
             print(update_b)
+            print(score_count)
+        else:
+            print(F"sorry, that's wrong. Final score: {score_count}")
+            isTrue = False
 
-print(score_count)
 
 # print(f"The length of data if {len(data)}")
