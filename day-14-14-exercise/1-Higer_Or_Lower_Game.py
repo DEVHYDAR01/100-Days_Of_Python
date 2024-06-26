@@ -30,7 +30,7 @@ def get_values(compare, which):
     return f"{which}: {get_name}, {get_description}, from {get_country}"
 
 get_values_a = get_values(compare_a, "Compare A")
-get_values_b = get_values(compare_b, "Compare B")
+get_values_b = get_values(compare_b, "Against B")
 print(logo)
 print(get_values_a)
 print(vs)
@@ -62,7 +62,7 @@ while isTrue:
             get_values_a = get_values(update_a, "Compare A")
             print(get_values_a)
             print(vs)
-            get_values_b = get_values(update_b, "Compare B")
+            get_values_b = get_values(update_b, "Against B")
             print(get_values_b)
             get_follower_count_a = extract_follower_count(update_a)
             get_follower_count_b = extract_follower_count(update_b)
@@ -85,7 +85,7 @@ while isTrue:
             get_values_a = get_values(update_a, "Compare A")
             print(get_values_a)
             print(vs)
-            get_values_b = get_values(update_b, "Compare B")
+            get_values_b = get_values(update_b, "Against B")
             print(get_values_b)
             get_follower_count_a = extract_follower_count(update_a)
             get_follower_count_b = extract_follower_count(update_b)
