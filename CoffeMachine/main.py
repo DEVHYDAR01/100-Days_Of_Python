@@ -29,3 +29,24 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
+
+def report(resource):
+    for key in resources:
+        get_key = key
+        get_value = resources[key]
+        print(f"{get_key}: {get_value}")
+
+
+# TODO: 1 print report of resources
+prefer = input("What would you like? (espresso/latte/cappuccino): ").lower()
+if prefer == "report":
+    report(resources)
+
+
+
+# TODO: 2 check resource sufficient
+
+# TODO: 3 process coins
+
+# TODO: 4 make coffe
