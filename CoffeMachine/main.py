@@ -51,7 +51,17 @@ def cost_update():
 def get_drink_recipe(menu):
     get_ingredients = MENU[prefer]
     recipe = get_ingredients["ingredients"]
-    print(recipe)
+    return recipe
+
+
+def get_drink_recipe_keys(recipe):
+    get_water = drink_recipe["water"]
+    if "milk" in drink_recipe:
+        get_milk = drink_recipe["milk"]
+    else:
+        get_milk = 0
+    get_coffee = drink_recipe["coffee"]
+    return f"water is {get_water} milk is {get_milk} coffee is {get_coffee}"
 
 
 # # TODO: 1 print report of resources
@@ -61,13 +71,18 @@ if prefer == "report":
     update_money = cost_update()
     print(update_money)
 elif prefer == "espresso":
-    get_drink_recipe(MENU)
+    drink_recipe = get_drink_recipe(MENU)
+    print(drink_recipe)
+    recipe_keys = get_drink_recipe_keys(drink_recipe)
+    print(recipe_keys)
 
 elif prefer == "latte":
-    get_drink_recipe(MENU)
+    drink_recipe = get_drink_recipe(MENU)
+    print(drink_recipe)
+    recipe_keys = get_drink_recipe_keys(drink_recipe)
+    print(recipe_keys)
 
-elif prefer == "cappuccino":
-    get_drink_recipe(MENU)
+# elif prefer == "cappuccino":
 
 # elif prefer == "off":
 
