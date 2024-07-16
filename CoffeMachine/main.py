@@ -29,30 +29,38 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-cost = {"money": 0}
+
+money = 0
 
 
-# # TODO: 1 print report of resources
-def report():
-    water_report = resources["water"]
-    milk_report = resources["milk"]
-    coffe_report = resources["coffee"]
-    print(f"water: {water_report}")
-    print(f"milk: {milk_report}")
-    print(f"water: {coffe_report}")
+def check_sufficient(drink_dictionary):
+    for key in resources:
+        if drink_dictionary[key] > resources[key]:
+            print(f"sorry there is no enough {key}")
+            return False
+        return True
+
+def coin_process():
 
 
-def recipe():
-    ingredient = MENU[prefer]["ingredients"]
-    return ingredient
+is_on = True
+# TODO: 1 print report of resources
+while is_on:
+    prefer = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    if prefer == "off":
+        is_on = False
+    elif prefer == 'report':
+        get_money = money
+        print(f"water: {resources['water']}ml")
+        print(f"milk: {resources['milk']}ml")
+        print(f"coffee: {resources['coffee']}g")
+        print(f"Money: ${money}")
+    else:
+        drink = MENU[prefer]
+        print(drink)
+        suffice = check_sufficient(drink["ingredients"])
+        print(suffice)
 
-
-prefer = input("What would you like? (espresso/latte/cappuccino): ").lower()
-ingredients = recipe()
-
-
-
-# report()
 
 # TODO: 2 check resource sufficient
 
