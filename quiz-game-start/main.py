@@ -6,10 +6,14 @@ question_bank = []
 
 for i in question_data:
     question_dictionary = i
-    get_text = question_dictionary["text"]
-    get_answer = question_dictionary["answer"]
+    get_text = question_dictionary["question"]
+    get_answer = question_dictionary["correct_answer"]
     question = Question(get_text, get_answer)
     question_bank.append(question)
 
 quiz = QuizBrain(question_bank)
-quiz.next_question()
+
+while quiz.still_has_questions():
+    quiz.next_question()
+print("You've completed the the quiz")
+print(f"Your final score was: {quiz.score}/{quiz.question_number}")
