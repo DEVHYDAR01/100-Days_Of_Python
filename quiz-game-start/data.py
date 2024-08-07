@@ -18,7 +18,8 @@ question_data = [
      "question": "The Windows ME operating system was released in the year 2000.",
      "correct_answer": "True", "incorrect_answers": ["False"]},
     {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
-     "question": "The programming language &quot;Python&quot; is based off a modified version of &quot;JavaScript&quot;.",
+     "question": "The programming language &quot;Python&quot; "
+                 "is based off a modified version of &quot;JavaScript&quot;.",
      "correct_answer": "False", "incorrect_answers": ["True"]},
     {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
      "question": "Pointers were not used in the original C programming language; they were added later on in C++.",
