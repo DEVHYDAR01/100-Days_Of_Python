@@ -8,30 +8,34 @@ colors = ["dark green", "dark slate gray", "maroon", "green yellow", "indigo", "
 def forward(steps):
     nana.color(random.choice(colors))
     nana.pensize(5)
+    nana.speed("fastest")
     return nana.forward(steps)
 
 
 def backward(steps):
     nana.color(random.choice(colors))
     nana.pensize(5)
+    nana.speed("fastest")
     return nana.backward(steps)
 
 
 def right(steps):
     nana.color(random.choice(colors))
     nana.pensize(5)
+    nana.speed("fastest")
     return nana.right(steps)
 
 
 def left(steps):
     nana.color(random.choice(colors))
     nana.pensize(5)
+    nana.speed("fastest")
     return nana.left(steps)
 
 
 motion = [forward, backward, right, left]
 
-while True:
+for i in range(2000):
     random_walk = random.choice(motion)
     print(random_walk)
     if random_walk == forward:
@@ -42,5 +46,5 @@ while True:
         random_walk(90)
 
 
-# my_screen = Screen()
-# my_screen.exitonclick()
+my_screen = Screen()
+my_screen.exitonclick()
