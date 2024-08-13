@@ -1,7 +1,9 @@
+import turtle
 from turtle import Turtle, Screen
 import random
 
 nana = Turtle()
+turtle.colormode(255)
 colors = ["dark green", "dark slate gray", "maroon", "green yellow", "indigo", "medium violet red"]
 
 
@@ -32,10 +34,18 @@ colors = ["dark green", "dark slate gray", "maroon", "green yellow", "indigo", "
 #     nana.speed("fastest")
 #     return nana.left(steps)
 
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    my_tuple = (r, g, b)
+    return my_tuple
+
+
 motion = [0, 90, 180, 270, 360]
 
 for i in range(1000):
-    nana.color(random.choice(colors))
+    nana.color(random_color())
     nana.pensize(5)
     nana.speed("fastest")
     nana.forward(10)
