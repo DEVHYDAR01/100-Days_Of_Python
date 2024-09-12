@@ -1,39 +1,16 @@
 from turtle import Turtle, Screen
 
-tess = Turtle()
 screen = Screen()
+# choose_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter your color: ")
+colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+screen.setup(width=500, height=400)
+y_axis = [-70, -40, -10, 20, 50, 80]
+for i in range(6):
+    tess = Turtle(shape="turtle")
+    tess.penup()
+    tess.color(colors[i])
+    tess.goto(x=-230, y=y_axis[i])
 
+# print(choose_bet)
 
-def forward():
-    tess.fd(10)
-
-
-def backward():
-    tess.bk(10)
-
-
-def clockwise():
-    tess.right(10)
-
-
-def counter_clockwise():
-    tess.left(10)
-
-
-def right_forward():
-    tess.right(10)
-    tess.forward(10)
-
-
-def clear_origin():
-    screen.resetscreen()
-
-
-screen.onkey(key="s", fun=backward)
-screen.onkey(key="w", fun=forward)
-screen.onkey(key="d", fun=clockwise)
-screen.onkey(key="a", fun=counter_clockwise)
-screen.onkey(key="c", fun=clear_origin)
-
-screen.listen()
 screen.exitonclick()
