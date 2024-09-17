@@ -7,16 +7,22 @@ screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 screen.tracer(0)
-my_snake = Snake()
+screen.listen()
+snake = Snake()
+
+screen.onkey(key="Up", fun=snake.up)
+screen.onkey(key="Down", fun=snake.down)
+screen.onkey(key="Left", fun=snake.left)
+screen.onkey(key="Right", fun=snake.right)
+
 
 is_game_on = True
 
 while is_game_on:
     screen.update()
-    time.sleep(1)
+    time.sleep(0.1)
 
-
-    my_snake.move()
-    print(my_snake.new_snake)
+    snake.move()
+    print(snake.new_snake)
 
 screen.exitonclick()
