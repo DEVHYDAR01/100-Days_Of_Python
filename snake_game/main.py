@@ -1,7 +1,7 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from snake import Snake
 from food import Food
-from  scoreboard import ScoreBoard
+from scoreboard import ScoreBoard
 import time
 
 screen = Screen()
@@ -41,10 +41,8 @@ while is_game_on:
         scoreboard.game_over()
 
     # Detect tail collision
-    for seg in snake.new_snake:
-        if seg == snake.new_snake[0]:
-            pass
-        elif snake.new_snake[0].distance(seg) < 10:
+    for seg in snake.new_snake[1:]:
+        if snake.new_snake[0].distance(seg) < 10:
             is_game_on = False
             scoreboard.game_over()
 
