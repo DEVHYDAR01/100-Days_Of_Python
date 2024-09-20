@@ -12,12 +12,21 @@ class Snake:
     def __init__(self):
         self.x_coordinates = [(0, 0), (-20, 0), (-40, 0)]
         self.new_snake = []
+        self.create()
+
+    def create(self):
         for turtle in self.x_coordinates:
-            snake = Turtle(shape="square")
-            snake.penup()
-            snake.goto(turtle)
-            snake.color("white")
-            self.new_snake.append(snake)
+            self.add(turtle)
+
+    def add(self, turtle):
+        snake = Turtle(shape="square")
+        snake.penup()
+        snake.goto(turtle)
+        snake.color("white")
+        self.new_snake.append(snake)
+
+    def extend(self):
+        self.add(self.new_snake[-1].position())
 
     def up(self):
         if self.new_snake[0].heading() != DOWN:
