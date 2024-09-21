@@ -1,35 +1,29 @@
-from turtle import Screen, Turtle
+from turtle import Screen
+from paddle import Paddle
+from ball import Ball
+import time
 
 screen = Screen()
 screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.title("The Famous Arcade Game: The Pong Game")
-paddle = Turtle()
-screen.listen()
-paddle.penup()
 screen.tracer(0)
+ball = Ball()
+r_paddle = Paddle((360, 0))
+l_paddle = Paddle((-360, 0))
 
-paddle.color("white")
-paddle.shape("square")
-paddle.setheading(90)
-paddle.turtlesize(stretch_len=5)
-paddle.goto(x=360, y=0)
-
-
-
-def up():
-    paddle.fd(20)
+screen.listen()
+screen.onkey(fun=r_paddle.up, key="Up")
+screen.onkey(fun=r_paddle.down, key="Down")
+screen.onkey(fun=l_paddle.up, key="w")
+screen.onkey(fun=l_paddle.down, key="s")
 
 
-def down():
-    paddle.bk(20)
-
-    
 game_on = True
 while game_on:
     screen.update()
-    screen.onkey(fun=up, key="Up")
-    screen.onkey(fun=down, key="Down")
+    time.sleep(0.1)
+    ball.move()
 
 
 screen.exitonclick()
