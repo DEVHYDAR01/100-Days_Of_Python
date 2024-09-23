@@ -22,8 +22,9 @@ screen.onkey(fun=l_paddle.down, key="s")
 
 
 game_on = True
+speed = 0
 while game_on:
-    time.sleep(0.1)
+    time.sleep(ball.speed_move)
     screen.update()
     ball.move()
     # Detect collision with the top and bottom walls
@@ -40,5 +41,6 @@ while game_on:
     if ball.xcor() < -380:
         ball.ball_reset_pos()
         scoreboard.r_paddle_score()
+
 
 screen.exitonclick()
