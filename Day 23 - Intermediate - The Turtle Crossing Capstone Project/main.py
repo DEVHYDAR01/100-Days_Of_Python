@@ -9,9 +9,14 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 screen.listen()
 player = Player()
+car_manager = CarManager()
+
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
     screen.onkey(fun=player.move_up, key="Up")
+    car_manager.car_movement()
+    print(car_manager.position())
+
