@@ -28,4 +28,4 @@ class CarManager:
             car.fd(STARTING_MOVE_DISTANCE)
 
     def speed_add(self):
-        self.speed_increase *= 0.15
+        self.speed_increase *= 0.9
