@@ -25,6 +25,12 @@ class Snake:
         snake.color("white")
         self.new_snake.append(snake)
 
+    def reset(self):
+        for seg in self.new_snake:
+            seg.goto(1000, 1000)
+        self.new_snake.clear()
+        self.create()
+
     def extend(self):
         self.add(self.new_snake[-1].position())
 
@@ -50,4 +56,3 @@ class Snake:
             y_snake_cor = self.new_snake[snake - 1].ycor()
             self.new_snake[snake].goto(x=x_snake_cor, y=y_snake_cor)
         self.new_snake[0].forward(MOVE_DISTANCE)
-        # self.new_snake[0].right(90)
