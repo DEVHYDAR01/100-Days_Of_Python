@@ -12,14 +12,6 @@ for invites in guests:
         to_write.write(replaced)
 
 
-
-
-
-
-
-
-
-
 #TODO: Create a letter using starting_letter.txt
 #for each name in invited_names.txt
 #Replace the [name] placeholder with the actual name.
