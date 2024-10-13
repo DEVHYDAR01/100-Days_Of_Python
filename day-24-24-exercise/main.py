@@ -1,4 +1,5 @@
-file = open("my_file.txt", mode="a")
-content = file.write("\n How are you!")
+file = open("../../Desktop/my_file.txt")
+content = file.read()
 print(content)
 file.close()
+
