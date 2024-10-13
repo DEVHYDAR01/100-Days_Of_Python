@@ -17,4 +17,3 @@ class Food(Turtle):
         x_random = random.randint(-280, 280)
         y_random = random.randint(-280, 280)
         self.goto(x_random, y_random)
-
