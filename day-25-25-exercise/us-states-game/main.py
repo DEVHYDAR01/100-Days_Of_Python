@@ -37,12 +37,5 @@ while len(correct_answers) < 50:
         writer_and_goto.goto(x=x_coordinate, y=y_coordinate)
         writer_and_goto.write(arg=answer_state, align='center', font=('Arial', 8, 'normal'))
 
-# states_to_learn.csv
-
-
-# creating a dict
-
-
-# creating a dataframe
 
 
