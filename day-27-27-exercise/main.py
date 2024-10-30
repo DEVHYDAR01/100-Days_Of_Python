@@ -1,26 +1,42 @@
 from tkinter import *
 
-
-def button_clicked():
-    get_val = enter.get()
-    my_label["text"] = get_val
-
-
 windows = Tk()
-windows.minsize(width=500, height=300)
-windows.title("My First GUI")
+windows.title("Mile to Km Converter")
+windows.minsize(width=150, height=100)
+windows.config(padx=50, pady=50)
 
-my_label = Label(text="I am label", font=("arial", 8, "bold"))
-my_label["text"] = "New Text"
-my_label.pack()
+# Distance in kilometers = Distance in miles × 1.60934
 
 
-# button
-button = Button(text="Click me", command=button_clicked)
-button.pack()
+def cal_miles_to_km():
+    get_miles = int(input_text.get())
+    km = get_miles * 1.60943
+    answer_label.config(text=round(km))
 
-enter = Entry(width=10)
-enter.pack()
+
+equal_to_label = Label()
+equal_to_label.config(text="is equal to")
+equal_to_label.grid(column=0, row=1)
+
+answer_label = Label()
+answer_label.config(text="0")
+answer_label.grid(column=1, row=1)
+
+miles_label = Label()
+miles_label.config(text="Miles")
+miles_label.grid(column=2, row=0)
+
+km_label = Label()
+km_label.config(text="Km")
+km_label.grid(column=2, row=1)
+
+input_text = Entry(width=10)
+input_text.insert(END, "0")
+input_text.grid(column=1, row=0)
+
+calculate_button = Button()
+calculate_button.config(text="Calculate", command=cal_miles_to_km)
+calculate_button.grid(column=1, row=2)
 
 
 
