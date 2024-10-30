@@ -6,8 +6,6 @@ windows.minsize(width=150, height=100)
 windows.config(padx=50, pady=50)
 
 # Distance in kilometers = Distance in miles × 1.60934
-
-
 def cal_miles_to_km():
     get_miles = int(input_text.get())
     km = get_miles * 1.60943
