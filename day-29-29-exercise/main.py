@@ -20,7 +20,7 @@ website_input = Entry(width=35)
 website_input.grid(column=1, row=1)
 
 emailuser_label = Label(text="Email/Username:")
-emailuser_label.grid(column=0, row=2)
+emailuser_label.grid(column=0, row=2, columnspan=2)
 
 emailuser_input = Entry(width=35)
 emailuser_input.grid(column=1, row=2)
