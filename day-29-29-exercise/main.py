@@ -40,20 +40,19 @@ def save():
     if len(website_input.get()) == 0 or len(password_input.get()) == 0:
         messagebox.showerror(title="Oops!", message="Please don't leave any fields empty!")
     else:
-        with open("./data.json", mode="r") as pass_file:
-            data = json.load(pass_file)
-            data.update(new_data)
-        with open("./data.json", mode="w") as pass_file:
-            json.dump(data, pass_file, indent=4)
-
-
-
-
-        website_input.delete(0, len(get_web_input))
-        password_input.delete(0, len(get_pass_input))
-
-
-
+        try:
+            with open("./data.json", mode="r") as pass_file:
+                data = json.load(pass_file)
+                data.update(new_data)
+        except FileNotFoundError:
+            with open("./data.json", mode="w") as pass_file:
+                json.dump(new_data, pass_file, indent=4)
+        else:
+            with open("./data.json", mode="w") as pass_file:
+                json.dump(data, pass_file, indent=4)
+        finally:
+            website_input.delete(0, len(get_web_input))
+            password_input.delete(0, len(get_pass_input))
 # ---------------------------- UI SETUP ------------------------------- #
 windows = Tk()
 windows.title("Password Manager")
