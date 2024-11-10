@@ -27,11 +27,18 @@ def generate_password():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def find_password():
-    with open("data.json", "r") as find_data:
-        password_finder = json.load(find_data)
-    for (key, value) in password_finder.items():
-        if website_input.get() == key:
-            messagebox.showinfo(title="Your password", message=f"{key}\n{value["password"]}")
+    try:
+        with open("data.json", "r") as find_data:
+            password_finder = json.load(find_data)
+    except FileNotFoundError:
+        messagebox.showerror(title="Error", message="No Data File Found!")
+    else:
+        for (key, value) in password_finder.items():
+            if website_input.get() == key:
+                messagebox.showinfo(title="Your password", message=f"{key}\n{value["password"]}")
+        if not website_input.get() in password_finder:
+            messagebox.showinfo(title="No details found", message="No details found for the website exits")
+
 def save():
     get_web_input = website_input.get()
     get_email_input = emailuser_input.get()
