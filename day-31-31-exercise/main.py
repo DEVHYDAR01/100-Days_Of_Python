@@ -16,7 +16,6 @@ try:
 except FileNotFoundError:
     df = pandas.read_csv("./data/french_words.csv")
     list_of_dicts = df.to_dict(orient="records")
-# updated_data = []
 get_random_dict = {}
 
 # function to flip the card
@@ -35,11 +34,13 @@ def next_card():
     canvas.itemconfig(word_canvas, text=f"{get_random_dict[FRENCH_WORD]}", fill="black")
     canvas.itemconfig(canvas_image, image=canvas_image_front)
     flip_timer = windows.after(3000, flip_card)
-    if get_random_dict in list_of_dicts:
-        list_of_dicts.remove(get_random_dict)
-        table = pandas.DataFrame(list_of_dicts)
-        table.to_csv("./words_to_learn.csv", index=False)
 
+
+def is_known():
+    list_of_dicts.remove(get_random_dict)
+    table = pandas.DataFrame(list_of_dicts)
+    table.to_csv("data/words_to_learn.csv", index=False)
+    next_card()
 
 flip_timer = windows.after(3000, flip_card)
 
@@ -56,7 +57,7 @@ canvas.grid(row=0, column=0, columnspan=2)
 
 # Buttons
 my_image_correct = PhotoImage(file="./images/right.png")
-correct_button = Button(image=my_image_correct, highlightthickness=0, command=next_card)
+correct_button = Button(image=my_image_correct, highlightthickness=0, command=is_known)
 correct_button.grid(row=1, column=1)
 
 my_image_wrong = PhotoImage(file="./images/wrong.png")
