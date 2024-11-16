@@ -17,27 +17,31 @@ password = ""
 
 list_of_letters = ["letter_1.txt", "letter_2.txt", "letter_3.txt"]
 
-today_date = dt.datetime.now()
-present_day = today_date.day
-present_month = today_date.month
+now = dt.datetime.now()
+present_day = now.day
+present_month = now.month
 
 df = pandas.read_csv("birthdays.csv")
-day_of_birthday = df["day"][0]
-month_of_birthday = df["month"]
-name_of_recipient = df["name"][0]
+for (index, row) in df.iterrows():
+    if (present_day and present_month) == (row["day"] and row["month"]):
+        get_ran_letter = random.choice(list_of_letters)
+        with open(f"./letter_templates/{get_ran_letter}") as ran_file:
+            content = ran_file.readlines()
+            replaced = content[0].replace("[NAME]", f"{row["name"]}")
+            content[0] = replaced
+            stringed_content = ''.join(content)
+        connection = smtplib.SMTP("smtp.gmail.com", port=587)
+        connection.starttls()
+        connection.login(user=my_email, password=password)
+        connection.sendmail(
+            from_addr=my_email,
+            to_addrs=f"{row["email"]}",
+            msg=f"SUBJECT: HAPPY BIRTHDAY\n\n{stringed_content} sorry if you got this mail i am just testing something")
+        connection.close()
 
-if present_day == day_of_birthday:
-    get_ran_letter = random.choice(list_of_letters)
-    with open(f"./letter_templates/{get_ran_letter}") as ran_file:
-        content = ran_file.readlines()
-        replaced = content[0].replace("[NAME]", f"{name_of_recipient}")
-        content[0] = replaced
-        stringed_content = ''.join(content)
-    connection = smtplib.SMTP("smtp.gmail.com", port=587)
-    connection.starttls()
-    connection.login(user=my_email, password=password)
-    connection.sendmail(
-        from_addr=my_email,
-        to_addrs=f"{df["email"][0]}",
-        msg=f"SUBJECT: HAPPY BIRTHDAY\n\n{stringed_content}")
-    connection.close()
+
+
+
+
+
+
