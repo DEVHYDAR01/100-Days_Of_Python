@@ -1,16 +1,18 @@
 import requests
 from twilio.rest import Client
 import os
+import dotenv
+
+dotenv.load_dotenv()
 
 END_POINT = "https://api.openweathermap.org/data/3.0/onecall"
-API_KEY = os.environ.get("API_KEY")
-account_sid = os.environ.get("ACCT_SID")
-auth_token = os.environ.get("AUTH_TOKEN")
-
+API_KEY = os.getenv("API_KEY")
+account_sid = os.getenv("ACCOUNT_SID")
+auth_token = os.getenv("AUTH_TOKEN")
 
 parameters = {
-    "lat": "-7.575489",
-    "lon": "110.824326",
+    "lat": "-1.832720",
+    "lon": "109.967987",
     "exclude": "current,daily",
     "appid": API_KEY
 }
@@ -36,5 +38,6 @@ if will_rain:
     )
 
     print(message.status)
+
 
 
