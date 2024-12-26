@@ -6,8 +6,13 @@ import os
 
 load_dotenv()
 testing_endpoint = "https://appbrewery.github.io/instant_pot/"
+browser_des = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+amazon_header = {
+    "User-Agent": browser_des,
+    "Accept-Language": "en-US"
+}
 
-response = requests.get(url=testing_endpoint)
+response = requests.get(url=testing_endpoint, headers=amazon_header)
 response.raise_for_status()
 sample_page = response.text
 # print(sample_page)
