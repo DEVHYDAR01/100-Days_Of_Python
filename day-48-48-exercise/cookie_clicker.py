@@ -22,7 +22,7 @@ while True:
         counter += 1
 
     print(f"Task completed with counter: {counter}")
-    print("Task stopped after the timer.")
+    # print("Task stopped after the timer.")
 
     elements = driver.find_elements(By.CSS_SELECTOR, "#store>div")
     elements_grayed = driver.find_elements(By.CSS_SELECTOR, '#store>div.grayed')
