@@ -22,6 +22,8 @@ while True:
         counter += 1
 
     print(f"Task completed with counter: {counter}")
+    cookie_per_sec = driver.find_element(By.ID, "cps").text
+    print(cookie_per_sec)
     # print("Task stopped after the timer.")
 
     elements = driver.find_elements(By.CSS_SELECTOR, "#store>div")
@@ -35,6 +37,7 @@ while True:
                   element not in elements_grayed]
     # print(not_grayed)
     most_expensive = max(not_grayed)
+    print(most_expensive)
     if money > most_expensive:
         get_index = elements_values.index(most_expensive)
         elements[get_index].click()
